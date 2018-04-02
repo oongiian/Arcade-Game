@@ -9,12 +9,12 @@
  * 这个引擎使画布的上下文(CTX)对象全局可用，从而使编写app.js更加简单。
  */
 
-var Engine = (function(global) {
+const Engine = (function(global) {
     /* 实现定义我们会在这个作用于用到的变量
      * 创建 canvas 元素，拿到对应的 2D 上下文
      * 设置 canvas 元素的高/宽 然后添加到dom中
      */
-    var doc = global.document,
+    let doc = global.document,
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
@@ -30,7 +30,7 @@ var Engine = (function(global) {
          * 速度是不一样的，我们需要一个对每个人都一样的常数（而不管他们的电脑有多快）
          * 就问你屌不屌！
          */
-        var now = Date.now(),
+        const now = Date.now(),
             dt = (now - lastTime) / 1000.0;
 
         /* 调用我们的 update / render 函数， 传递事件间隙给 update 函数因为这样
@@ -96,7 +96,7 @@ var Engine = (function(global) {
      */
     function render() {
         /* 这个数组保存着游戏关卡的特有的行对应的图片相对路径。 */
-        var rowImages = [
+        const rowImages = [
                 'images/water-block.png',   // 这一行是河。
                 'images/stone-block.png',   // 第一行石头
                 'images/stone-block.png',   // 第二行石头
@@ -105,8 +105,8 @@ var Engine = (function(global) {
                 'images/grass-block.png'    // 第二行草地
             ],
             numRows = 6,
-            numCols = 5,
-            row, col;
+            numCols = 5;
+            let row, col;
 
         /* 便利我们上面定义的行和列，用 rowImages 数组，在各自的各个位置绘制正确的图片 */
         for (row = 0; row < numRows; row++) {
